@@ -22,30 +22,33 @@
 export default {
   name: 'Question',
   
+  data :  function() {
+      return {
+        counter: 0,
+      };
+  },
+  
   methods : {
      check: function ( e ) { 
        e.preventDefault(); 
        var answerArray = [];
-       let counter = 0;
        const answer1 = document.getElementById("male") ;
        const answer2 = document.getElementById("female") ;
        const answer3 = document.getElementById("Other") ;
 
       if(answer1.checked ) {
-        answerArray.push(counter,answer1.value);  
-        console.log(answerArray)
-        counter++
+        answerArray = [...answerArray,this.counter,answer1.value ];  
+         this.counter++
       }
       if(answer2.checked ) {  
-        answerArray.push(counter,answer2.value);  
-        console.log(answerArray)
-        counter++      
+        answerArray.push(this.counter,answer2.value);  
+         this.counter++      
         }
       if(answer3.checked ) {  
-        answerArray.push(counter,answer3.value);  
-        console.log(answerArray)
-        counter++      
+        answerArray.push(this.counter,answer3.value);  
+        this.counter++      
         }
+        console.log(answerArray, counter)
 
     }
   }

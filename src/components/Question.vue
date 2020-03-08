@@ -3,14 +3,14 @@
     <form action=""> 
       <h2>Answear my questions...</h2>
       <h3>How much is <span>2+2</span> ?</h3>
-      <input type="radio" name="gender" id="male" value="male"> 
-      <label for="male">Male</label>
+      <input type="radio" name="gender" id="first" value="first"> 
+      <label for="male">3</label>
       <br>
-      <input type="radio" name="gender" id="female" value="female"> 
-      <label for="female">Female</label>
+      <input type="radio" name="gender" id="second" value="second"> 
+      <label for="female">4</label>
       <br>
-      <input type="radio" name="gender" id="Other" value="Other"> 
-      <label for="other">Other</label>
+      <input type="radio" name="gender" id="third" value="third"> 
+      <label for="other">1</label>
        <br>
       <button v-on:click="check">Submit</button> 
     
@@ -24,32 +24,28 @@ export default {
   
   data :  function() {
       return {
-        counter: 0,
+         answerArray:  []
       };
   },
   
   methods : {
      check: function ( e ) { 
        e.preventDefault(); 
-       var answerArray = [];
-       const answer1 = document.getElementById("male") ;
-       const answer2 = document.getElementById("female") ;
-       const answer3 = document.getElementById("Other") ;
+       const answer1 = document.getElementById("first") ;
+       const answer2 = document.getElementById("second") ;
+       const answer3 = document.getElementById("third") ;
 
       if(answer1.checked ) {
-        answerArray = [...answerArray,this.counter,answer1.value ];  
-         this.counter++
+        this.answerArray.push( answer1.value)  
       }
       if(answer2.checked ) {  
-        answerArray.push(this.counter,answer2.value);  
-         this.counter++      
+        this.answerArray.push(answer2.value) 
         }
       if(answer3.checked ) {  
-        answerArray.push(this.counter,answer3.value);  
-        this.counter++      
-        }
-        console.log(answerArray, counter)
-
+        this.answerArray.push(answer3.value) 
+        } 
+       console.log(this.answerArray);
+       
     }
   }
 }
